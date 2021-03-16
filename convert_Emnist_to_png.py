@@ -11,11 +11,11 @@ import png
 
 def read(dataset = "training", path = "."):
     if dataset is "training":
-        fname_img = os.path.join('emnist-letters-train-images-idx3-ubyte')
-        fname_lbl = os.path.join('emnist-letters-train-labels-idx1-ubyte')
+        fname_img = os.path.join(split + '-train-images-idx3-ubyte')
+        fname_lbl = os.path.join(split + '-train-labels-idx1-ubyte')
     elif dataset is "testing":
-        fname_img = os.path.join('emnist-letters-test-images-idx3-ubyte')
-        fname_lbl = os.path.join('emnist-letters-test-labels-idx1-ubyte')
+        fname_img = os.path.join(split + '-test-images-idx3-ubyte')
+        fname_lbl = os.path.join(split + '-test-labels-idx1-ubyte')
     else:
         raise ValueError("dataset must be 'testing' or 'training'")
 
@@ -58,9 +58,10 @@ def write_dataset(labels, data, size, rows, cols, output_dir):
             
 if __name__ == "__main__":
 
-    dataset = 'emnist-letters'
+#    dataset = 'emnist-letters'
+    split = 'emnist-balanced'
 #    input_path = sys.argv[1]
-    output_path = 'emnist'
+    output_path = split
 
     for dataset in ["training", "testing"]:
         labels, data, size, rows, cols = read(dataset)
